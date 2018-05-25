@@ -6,6 +6,12 @@ export default {
 			res.send(dbRes)
 		})
 	},
+	GetProduct: (req, res) => {
+		const knex = req.app.get('db');
+		knex.select().where('id', req.params.id).table('products').then(dbRes => {
+			res.send(dbRes)
+		})
+	},
 
 	CreateProduct: (req, res) => {
 		const knex = req.app.get('db');

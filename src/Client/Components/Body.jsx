@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Product from './Products';
-import AddProduct from './Add';
+
 import axios from 'axios';
 
 const Container = styled.div`
@@ -26,6 +26,7 @@ class Body extends Component {
 		this.state = {
 			products: []
 		};
+
 		this.RefreshProducts = this.RefreshProducts.bind(this);
 	}
 
@@ -44,15 +45,15 @@ class Body extends Component {
 		return (
 			<Container>
 				<ProductContainer>
-					{this.state.products.map(product => (
+					{this.state.products.map((product, index) => (
 						<Product
 							key={product.id}
 							{...product}
+							index={index}
 							refreshProducts={this.RefreshProducts}
 						/>
 					))}
 				</ProductContainer>
-				<AddProduct refreshProducts={this.RefreshProducts} />
 			</Container>
 		);
 	}

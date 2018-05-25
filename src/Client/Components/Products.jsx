@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -64,9 +65,7 @@ const Product = props => (
 				</Button>
 				<Button
 					onClick={() => {
-						axios.delete(`/api/inventory/${props.id}`).then(res => {
-							props.refreshProducts(res.data);
-						});
+						props.history.push(`/create/${props.id}`);
 					}}
 				>
 					Edit
@@ -84,4 +83,4 @@ Product.propTypes = {
 	refreshProducts: PropTypes.func.isRequired
 };
 
-export default Product;
+export default withRouter(Product);

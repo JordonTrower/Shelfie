@@ -33,9 +33,12 @@ function normalizePort(val) {
 const port = normalizePort(process.env.SERVERPORT || 3001)
 
 app.get('/api/inventory', Controller.GetProducts)
+app.get('/api/inventory/:id', Controller.GetProduct)
 app.post('/api/inventory', Controller.CreateProduct)
 app.delete('/api/inventory/:id', Controller.DeleteProduct)
-app.put('/api/inventory/:id', () => {})
+app.put('/api/inventory/:id', (req, res) => {
+	res.send('aa')
+})
 
 
 
