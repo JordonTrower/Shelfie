@@ -24,11 +24,10 @@ const InfoContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	justify-content: space-between;
 	width: 65%;
-	> p {
-		padding-top: 8.5px;
-		padding-left: 5px;
-		padding-right: 10px;
+	> div > p {
+		padding: 8.5px 10px 0 10px;
 		margin: 0;
 	}
 `;
@@ -36,7 +35,7 @@ const InfoContainer = styled.div`
 const Button = styled.div`
 	color: white;
 	background-color: #ed6b5a;
-	margin: 5px;
+	margin: 12px;
 	padding: 5px;
 	border-radius: 5px;
 `;
@@ -51,8 +50,10 @@ const Product = props => (
 	<Container>
 		<StyledImage src={props.img} />
 		<InfoContainer>
-			<p>{props.name}</p>
-			<p>${props.price}</p>
+			<div>
+				<p>{props.name}</p>
+				<p>${props.price}</p>
+			</div>
 			<ButtonGroup>
 				<Button
 					onClick={() => {
