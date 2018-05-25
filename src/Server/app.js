@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import path from 'path'
 import knex from 'knex';
 import BodyParser from 'body-parser'
 import Controller from './ProductController'
@@ -32,13 +33,13 @@ function normalizePort(val) {
 
 const port = normalizePort(process.env.SERVERPORT || 3001)
 
+app.use('/', express.static(path.join(__dirname, '../../build')))
+
 app.get('/api/inventory', Controller.GetProducts)
 app.get('/api/inventory/:id', Controller.GetProduct)
 app.post('/api/inventory', Controller.CreateProduct)
 app.delete('/api/inventory/:id', Controller.DeleteProduct)
-app.put('/api/inventory/:id', (req, res) => {
-	res.send('aa')
-})
+app.put('/api/inventory/:id', Controller.UpdateProduct)
 
 
 

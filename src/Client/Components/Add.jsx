@@ -160,7 +160,7 @@ class Add extends Component {
 									});
 								}}
 							>
-								Add To Inventory
+								{this.state.method === 'post' ? 'Add to Inventory' : 'Edit Product'}
 							</Button>
 						</ButtonContainer>
 					</InputContainer>
